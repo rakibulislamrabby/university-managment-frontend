@@ -161,7 +161,7 @@ export interface AuthContextType {
 
 // Login credentials
 export interface LoginCredentials {
-  email: string;
+  email: string; // This field is actually used for user ID
   password: string;
 }
 

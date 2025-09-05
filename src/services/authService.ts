@@ -52,11 +52,13 @@ class AuthService {
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Find user by email
-      const user = mockUsers.find(u => {
-        const profile = getUserProfile(u);
-        return profile && 'email' in profile && profile.email === credentials.email;
-      });
+      // Debug logging
+      console.log('Login attempt:', credentials);
+      console.log('Available users:', mockUsers.map(u => ({ id: u.id, password: u.password })));
+
+      // Find user by ID
+      const user = mockUsers.find(u => u.id === credentials.email);
+      console.log('Found user:', user);
 
       if (!user) {
         return { success: false, error: 'User not found' };
