@@ -295,7 +295,7 @@ export default function StudentInformationPage() {
               <h4 className="font-semibold mb-3">Guardian Information</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
                 <div>
-                  <h5 className="font-medium mb-2">Father's Information</h5>
+                  <h5 className="font-medium mb-2">Father&apos;s Information</h5>
                   <div className="space-y-1">
                     <div>Name: {selectedStudentData.guardian.fatherName}</div>
                     <div>Occupation: {selectedStudentData.guardian.fatherOccupation}</div>
@@ -303,7 +303,7 @@ export default function StudentInformationPage() {
                   </div>
                 </div>
                 <div>
-                  <h5 className="font-medium mb-2">Mother's Information</h5>
+                  <h5 className="font-medium mb-2">Mother&apos;s Information</h5>
                   <div className="space-y-1">
                     <div>Name: {selectedStudentData.guardian.motherName}</div>
                     <div>Occupation: {selectedStudentData.guardian.motherOccupation}</div>

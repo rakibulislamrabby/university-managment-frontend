@@ -192,7 +192,7 @@ export default function FacultyCoursesPage() {
                       <tr key={student.id} className="border-b">
                         <td className="py-3 font-medium">{student.id}</td>
                         <td className="py-3">
-                          {student.name.firstName} {student.name.lastName}
+                          {student.name?.firstName} {student.name?.lastName}
                         </td>
                         <td className="py-3">{student.email}</td>
                         <td className="py-3 text-center">

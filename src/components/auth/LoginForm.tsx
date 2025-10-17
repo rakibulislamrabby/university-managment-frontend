@@ -35,7 +35,7 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
       } else {
         setError('Invalid user ID or password');
       }
-    } catch (err) {
+    } catch {
       setError('Login failed. Please try again.');
     } finally {
       setIsSubmitting(false);

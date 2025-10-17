@@ -115,14 +115,14 @@ export default function MyCoursesPage() {
             </div>
             <div>
               <div className="text-2xl font-bold text-purple-600">
-                {completedCourses.reduce((sum, course) => sum + course.credits, 0)}
+                {completedCourses.reduce((sum, course) => sum + (course.credits || 0), 0)}
               </div>
               <div className="text-sm text-gray-600">Credits Earned</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-orange-600">
                 {completedCourses.length > 0 
-                  ? (completedCourses.reduce((sum, course) => sum + course.enrollment.gpa, 0) / completedCourses.length).toFixed(2)
+                  ? (completedCourses.reduce((sum, course) => sum + (course.enrollment.gpa || 0), 0) / completedCourses.length).toFixed(2)
                   : '0.00'
                 }
               </div>

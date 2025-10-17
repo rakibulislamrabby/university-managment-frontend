@@ -110,7 +110,7 @@ export default function AdminDashboard() {
           <CardContent>
             <div className="space-y-2 text-sm">
               <p><span className="font-medium">Active Sessions:</span> 1,234</p>
-              <p><span className="font-medium">Today's Logins:</span> 856</p>
+              <p><span className="font-medium">Today&apos;s Logins:</span> 856</p>
               <p><span className="font-medium">Pending Approvals:</span> 47</p>
               <p><span className="font-medium">System Alerts:</span> 3</p>
             </div>

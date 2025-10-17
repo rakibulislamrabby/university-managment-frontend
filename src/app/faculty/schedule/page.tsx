@@ -130,7 +130,7 @@ export default function FacultySchedulePage() {
       {/* Today's Classes */}
       <Card>
         <CardHeader>
-          <CardTitle>Today's Classes</CardTitle>
+          <CardTitle>Today&apos;s Classes</CardTitle>
           <CardDescription>Your classes scheduled for today</CardDescription>
         </CardHeader>
         <CardContent>

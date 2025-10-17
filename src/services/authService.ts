@@ -1,4 +1,4 @@
-import { User, AuthUser, LoginCredentials, UserRole } from '@/types/auth';
+import { User, AuthUser, LoginCredentials, UserRole, Student, Faculty, Admin } from '@/types/auth';
 import { mockUsers, getUserProfile } from '@/data/mockData';
 
 class AuthService {
@@ -150,7 +150,7 @@ class AuthService {
     return false;
   }
 
-  public async forceLogout(userId: string): Promise<boolean> {
+  public async forceLogout(): Promise<boolean> {
     // In a real app, this would invalidate the user's session on the server
     // For now, just return true
     return true;
@@ -165,7 +165,7 @@ class AuthService {
   }
 
   // Update profile methods
-  public async updateProfile(updatedProfile: Partial<any>): Promise<boolean> {
+  public async updateProfile(updatedProfile: Partial<Student & Faculty & Admin>): Promise<boolean> {
     if (!this.currentUser) return false;
 
     try {

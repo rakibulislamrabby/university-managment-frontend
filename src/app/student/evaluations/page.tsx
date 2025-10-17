@@ -65,12 +65,10 @@ export default function TeacherEvaluationPage() {
   };
 
   const StarRating = ({ 
-    category, 
     rating, 
     onChange, 
     disabled = false 
   }: { 
-    category: string; 
     rating: number; 
     onChange: (rating: number) => void;
     disabled?: boolean;
@@ -174,7 +172,7 @@ export default function TeacherEvaluationPage() {
                   </h3>
                   <p className="text-green-700">
                     You have already evaluated this course on{' '}
-                    {new Date(selectedCourseData.evaluation?.submissionDate).toLocaleDateString()}
+                    {selectedCourseData.evaluation?.submissionDate ? new Date(selectedCourseData.evaluation.submissionDate).toLocaleDateString() : 'Unknown'}
                   </p>
                 </div>
                 
@@ -186,7 +184,6 @@ export default function TeacherEvaluationPage() {
                         {category.replace('_', ' ')}
                       </span>
                       <StarRating
-                        category={category}
                         rating={rating}
                         onChange={() => {}}
                         disabled={true}
@@ -199,7 +196,7 @@ export default function TeacherEvaluationPage() {
                   <div>
                     <h4 className="font-semibold mb-2">Your Feedback:</h4>
                     <p className="p-3 bg-gray-50 rounded border italic">
-                      "{selectedCourseData.evaluation.feedback}"
+                      &ldquo;{selectedCourseData.evaluation.feedback}&rdquo;
                     </p>
                   </div>
                 )}
@@ -216,7 +213,6 @@ export default function TeacherEvaluationPage() {
                         {category.replace('_', ' ')}:
                       </label>
                       <StarRating
-                        category={category}
                         rating={rating}
                         onChange={(newRating) => handleRatingChange(category, newRating)}
                       />
@@ -272,7 +268,7 @@ export default function TeacherEvaluationPage() {
                           {course.code} • {course.faculty?.name.firstName} {course.faculty?.name.lastName}
                         </p>
                         <p className="text-sm text-gray-600">
-                          Evaluated on: {new Date(course.evaluation?.submissionDate).toLocaleDateString()}
+                          Evaluated on: {course.evaluation?.submissionDate ? new Date(course.evaluation.submissionDate).toLocaleDateString() : 'Unknown'}
                         </p>
                       </div>
                       <div className="text-right">
@@ -285,7 +281,7 @@ export default function TeacherEvaluationPage() {
                     
                     {course.evaluation?.feedback && (
                       <div className="mt-3 p-3 bg-gray-50 rounded border">
-                        <p className="text-sm italic">"{course.evaluation.feedback}"</p>
+                        <p className="text-sm italic">&ldquo;{course.evaluation.feedback}&rdquo;</p>
                       </div>
                     )}
                   </div>
@@ -303,7 +299,7 @@ export default function TeacherEvaluationPage() {
         <CardContent>
           <div className="space-y-3 text-sm">
             <div>
-              <strong>Teaching Quality:</strong> Rate the instructor's teaching methods, clarity, and engagement.
+              <strong>Teaching Quality:</strong> Rate the instructor&apos;s teaching methods, clarity, and engagement.
             </div>
             <div>
               <strong>Course Content:</strong> Evaluate the relevance, organization, and depth of course material.
@@ -312,7 +308,7 @@ export default function TeacherEvaluationPage() {
               <strong>Communication:</strong> Assess how well the instructor communicates and responds to questions.
             </div>
             <div>
-              <strong>Availability:</strong> Rate the instructor's accessibility for help and office hours.
+              <strong>Availability:</strong> Rate the instructor&apos;s accessibility for help and office hours.
             </div>
             <div>
               <strong>Overall:</strong> Your general satisfaction with the course and instructor.

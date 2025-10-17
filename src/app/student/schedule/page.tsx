@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { mockSchedule, mockEnrollments } from '@/data/mockData';
 import { useAuth } from '@/contexts/AuthContext';
 
 export default function ClassSchedulePage() {
   const { user } = useAuth();
-  const [selectedWeek, setSelectedWeek] = useState('current');
+  // const [selectedWeek, setSelectedWeek] = useState('current'); // Unused for now
 
   // Get student's enrolled courses
   const studentEnrollments = mockEnrollments.filter(e => e.studentId === user?.id && e.status === 'enrolled');
@@ -135,7 +135,7 @@ export default function ClassSchedulePage() {
       {/* Today's Classes */}
       <Card>
         <CardHeader>
-          <CardTitle>Today's Classes</CardTitle>
+          <CardTitle>Today&apos;s Classes</CardTitle>
           <CardDescription>Classes scheduled for today</CardDescription>
         </CardHeader>
         <CardContent>

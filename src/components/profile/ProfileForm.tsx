@@ -4,37 +4,41 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
-import { Student, Faculty, Admin, UserRole } from '@/types/auth';
+import { UserRole, Student, Faculty, Admin } from '@/types/auth';
+
+type ProfileFormData = Partial<Student & Faculty & Admin>;
 import authService from '@/services/authService';
 
 export default function ProfileForm() {
   const { user } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState<any>({});
+  const [formData, setFormData] = useState<ProfileFormData>({});
 
-  if (!user) return null;
-
-  const profile = user.profile;
+  const profile = user?.profile;
 
   React.useEffect(() => {
     // Initialize form data with current profile
-    setFormData(profile);
+    if (profile) {
+      setFormData(profile);
+    }
   }, [profile]);
+
+  if (!user) return null;
 
   const handleInputChange = (field: string, value: string) => {
     if (field.includes('.')) {
       // Handle nested fields like name.firstName
       const [parent, child] = field.split('.');
-      setFormData((prev: any) => ({
+      setFormData((prev) => ({
         ...prev,
         [parent]: {
-          ...prev[parent],
+          ...(prev[parent as keyof ProfileFormData] as object || {}),
           [child]: value
         }
       }));
     } else {
-      setFormData((prev: any) => ({
+      setFormData((prev) => ({
         ...prev,
         [field]: value
       }));

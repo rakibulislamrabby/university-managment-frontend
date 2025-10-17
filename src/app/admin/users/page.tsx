@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { mockUsers, mockStudents, mockFaculty, mockAdmins, getUserProfile } from '@/data/mockData';
+import { mockUsers, getUserProfile } from '@/data/mockData';
 import { UserRole } from '@/types/auth';
 
 export default function UserManagementPage() {
@@ -24,28 +24,28 @@ export default function UserManagementPage() {
     return roleMatch && searchMatch;
   });
 
-  const handleBlockUser = async (userId: string) => {
+  const handleBlockUser = async () => {
     // In real app, make API call
     if (confirm('Are you sure you want to block this user?')) {
       alert('User blocked successfully');
     }
   };
 
-  const handleUnblockUser = async (userId: string) => {
+  const handleUnblockUser = async () => {
     // In real app, make API call
     if (confirm('Are you sure you want to unblock this user?')) {
       alert('User unblocked successfully');
     }
   };
 
-  const handleChangePassword = async (userId: string) => {
+  const handleChangePassword = async () => {
     const newPassword = prompt('Enter new password:');
     if (newPassword) {
       alert('Password changed successfully');
     }
   };
 
-  const handleForceLogout = async (userId: string) => {
+  const handleForceLogout = async () => {
     if (confirm('Force logout this user from all devices?')) {
       alert('User logged out from all devices');
     }
@@ -224,7 +224,7 @@ export default function UserManagementPage() {
                               <Button
                                 variant="outline"
                                 size="sm"
-                                onClick={() => handleUnblockUser(user.id)}
+                                onClick={() => handleUnblockUser()}
                                 className="text-green-600 hover:text-green-700"
                               >
                                 Unblock
@@ -233,7 +233,7 @@ export default function UserManagementPage() {
                               <Button
                                 variant="outline"
                                 size="sm"
-                                onClick={() => handleBlockUser(user.id)}
+                                onClick={() => handleBlockUser()}
                                 className="text-red-600 hover:text-red-700"
                               >
                                 Block
@@ -345,20 +345,20 @@ export default function UserManagementPage() {
                 <div className="flex flex-wrap gap-3">
                   <Button
                     variant="outline"
-                    onClick={() => handleChangePassword(user.id)}
+                    onClick={() => handleChangePassword()}
                   >
                     Change Password
                   </Button>
                   <Button
                     variant="outline"
-                    onClick={() => handleForceLogout(user.id)}
+                    onClick={() => handleForceLogout()}
                   >
                     Force Logout
                   </Button>
                   {user.isBlocked ? (
                     <Button
                       variant="outline"
-                      onClick={() => handleUnblockUser(user.id)}
+                      onClick={() => handleUnblockUser()}
                       className="text-green-600 hover:text-green-700"
                     >
                       Unblock User
@@ -366,7 +366,7 @@ export default function UserManagementPage() {
                   ) : (
                     <Button
                       variant="outline"
-                      onClick={() => handleBlockUser(user.id)}
+                      onClick={() => handleBlockUser()}
                       className="text-red-600 hover:text-red-700"
                     >
                       Block User
